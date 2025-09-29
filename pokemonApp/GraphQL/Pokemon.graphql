@@ -1,0 +1,22 @@
+query PokemonGraphQLCall {
+  pokemon_v2_pokemon(order_by: {id: asc}, limit: 20) {
+    id
+    name
+    pokemon_v2_pokemonsprites {
+      sprites(path: "front_default")
+    }
+    height
+    weight
+    pokemon_v2_pokemontypes {
+      pokemon_v2_type {
+        name
+      }
+    }
+    pokemon_v2_pokemonstats {
+      pokemon_v2_stat {
+        name
+      }
+      base_stat
+    }
+  }
+}
