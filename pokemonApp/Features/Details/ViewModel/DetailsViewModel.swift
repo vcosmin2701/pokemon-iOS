@@ -1,8 +1,9 @@
 import Foundation
 
-class DetailsViewModel: ObservableObject {
-    @Published var pokemon: Pokemon
-    @Published var favPokemons: [Pokemon] = []
+@Observable
+class DetailsViewModel {
+    var pokemon: Pokemon
+    var favPokemons: [Pokemon] = []
     
     private let defaults = UserDefaults.standard
     

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct PokemonDetailsView: View {
-    @ObservedObject var detailsModel: DetailsViewModel
+    @State var detailsModel: DetailsViewModel
     
     var body: some View {
         VStack {

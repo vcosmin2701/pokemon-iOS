@@ -2,10 +2,11 @@ import Foundation
 import Apollo
 import PokeAPI
 
-class PokemonViewModel: ObservableObject {
-    @Published var pokemonList: [Pokemon] = []
-    @Published var isLoading: Bool = true
-    @Published var searchOption: String = ""
+@Observable
+class PokemonViewModel {
+    var pokemonList: [Pokemon] = []
+    var isLoading: Bool = true
+    var searchOption: String = ""
     
     private let apolloClient = ApolloClient(url: URL(string: "https://beta.pokeapi.co/graphql/v1beta")!)
     
