@@ -26,23 +26,7 @@ class PokemonViewModel {
             switch result {
             case .success(let graphQLResult):
                 if let pokemons = graphQLResult.data?.pokemon_v2_pokemon {
-                    self.pokemonList = pokemons.compactMap { pokemon in
-                        let sprite = pokemon.pokemon_v2_pokemonsprites.first?.sprites
-                        let types: [String] = pokemon.pokemon_v2_pokemontypes.map { item in
-                            if let temp = item.pokemon_v2_type {
-                                return temp.name
-                            }
-                            return "unknown"
-                        }
-                        
-                        let stats: [PokemonStatType] = pokemon.pokemon_v2_pokemonstats.map { item in
-                            if let temp = item.pokemon_v2_stat {
-                                return PokemonStatType(name: temp.name, baseStat: item.base_stat)
-                            }
-                            return PokemonStatType(name: "", baseStat: 0)
-                        }
-                        return Pokemon(id: pokemon.id, name: pokemon.name.capitalized, height: pokemon.height ?? 0, weight: pokemon.height ?? 0, sprite: sprite ?? "", type: types, stats: stats)
-                    }
+                    self.pokemonList = PokemonFactory.createPokemons(from: pokemons)
                 }
             case .failure(let error):
                 print("Error loading Pokémon: \(error.localizedDescription)")

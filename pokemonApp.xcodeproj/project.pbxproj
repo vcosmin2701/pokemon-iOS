@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -53,6 +53,10 @@
 		87A403F02CA1856B000F6BEE /* pokemonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pokemonApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		49E533352E8BB72B0046B5E4 /* Factory */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Factory; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		879712C52CA5488500D632B2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -85,6 +89,7 @@
 		872126A62CA3FC800043CC78 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				49E533352E8BB72B0046B5E4 /* Factory */,
 				879712C32CA540F600D632B2 /* View */,
 				879712C22CA540F000D632B2 /* ViewModel */,
 				879712C12CA540E700D632B2 /* Model */,
@@ -256,6 +261,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				49E533352E8BB72B0046B5E4 /* Factory */,
 			);
 			name = pokemonApp;
 			packageProductDependencies = (
