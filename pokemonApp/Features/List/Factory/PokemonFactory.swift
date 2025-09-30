@@ -1,8 +1,8 @@
 import Foundation
 import PokeAPI
 
-struct PokemonFactory {
-    static func createPokemon(from data: PokemonGraphQLCallQuery.Data.Pokemon_v2_pokemon) -> Pokemon {
+struct PokemonFactory: PokemonFactoryProtocol {
+    func createPokemon(from data: PokemonGraphQLCallQuery.Data.Pokemon_v2_pokemon) -> Pokemon {
         let sprite = data.pokemon_v2_pokemonsprites.first?.sprites
         
         let types: [String] = data.pokemon_v2_pokemontypes.map { item in
@@ -30,7 +30,7 @@ struct PokemonFactory {
         )
     }
     
-    static func createPokemons(from dataArray: [PokemonGraphQLCallQuery.Data.Pokemon_v2_pokemon]) -> [Pokemon] {
+    func createPokemons(from dataArray: [PokemonGraphQLCallQuery.Data.Pokemon_v2_pokemon]) -> [Pokemon] {
         return dataArray.map { createPokemon(from: $0) }
     }
 }

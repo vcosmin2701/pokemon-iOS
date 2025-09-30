@@ -9,6 +9,11 @@ class PokemonViewModel {
     var searchOption: String = ""
     
     private let apolloClient = ApolloClient(url: URL(string: "https://beta.pokeapi.co/graphql/v1beta")!)
+    private let factory: PokemonFactoryProtocol
+    
+    init(factory: PokemonFactoryProtocol = PokemonFactory()) {
+        self.factory = factory
+    }
     
     var filteredPokemonList: [Pokemon] {
         if searchOption.isEmpty {
@@ -26,7 +31,7 @@ class PokemonViewModel {
             switch result {
             case .success(let graphQLResult):
                 if let pokemons = graphQLResult.data?.pokemon_v2_pokemon {
-                    self.pokemonList = PokemonFactory.createPokemons(from: pokemons)
+                    self.pokemonList = self.factory.createPokemons(from: pokemons)
                 }
             case .failure(let error):
                 print("Error loading Pokémon: \(error.localizedDescription)")
